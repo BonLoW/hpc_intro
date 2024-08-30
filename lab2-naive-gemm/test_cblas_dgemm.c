@@ -4,8 +4,7 @@
 #define M 3
 #define N 3
 #define K 2
-int main()
-{
+int main() {
   int i = 0;
   double A[M * K] = {1.0, 2.0, 1.0, -3.0, 4.0, -1.0};
   double B[K * N] = {1.0, 2.0, 1.0, -3.0, 4.0, -1.0};
@@ -17,7 +16,8 @@ int main()
   int lda = M;
   int ldb = K;
   int ldc = M;
-  cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, M, N, K, alpha, A, lda, B, ldb, beta, C, ldc);
+  cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, M, N, K, alpha, A, lda,
+              B, ldb, beta, C, ldc);
 
   for (i = 0; i < 9; i++)
     printf("%lf ", C[i]);
